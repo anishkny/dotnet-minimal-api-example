@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "dotnet run",
+    "test": "newman run api-tests.postman_collection.json",
+    "start-and-test": "start-server-and-test start 5000 test"
+  },
+  "devDependencies": {
+    "newman": "^5.3.2",
+    "start-server-and-test": "^2.0.0"
+  }
+}
