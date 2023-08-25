@@ -10,4 +10,8 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7
-      - run: dotnet build dotnet-minimal-api.csproj
+      - uses: actions/setup-node@v3
+      - name: Build and test
+        run: |
+          npm install
+          npm run start-and-test

@@ -1,3 +1,4 @@
 *.sln
 bin/
+node_modules/
 obj/
