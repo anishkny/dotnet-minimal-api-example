@@ -1,4 +1,5 @@
 *.sln
 bin/
+coverage.xml
 node_modules/
 obj/
