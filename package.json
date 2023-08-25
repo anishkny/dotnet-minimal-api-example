@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "start": "dotnet run",
-    "test": "newman run api-tests.postman_collection.json",
+    "prestart": "dotnet tool restore",
+    "start": "dotnet tool run dotnet-coverage collect -o coverage.xml -f cobertura dotnet run",
+    "test": "newman run api-tests.postman_collection.json --delay-request 500",
     "start-and-test": "start-server-and-test start 5000 test"
   },
   "devDependencies": {
