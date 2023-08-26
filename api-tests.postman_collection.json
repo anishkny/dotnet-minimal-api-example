@@ -316,7 +316,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"feed fish\",\n    \"isComplete\": false\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -363,6 +363,46 @@
 					"path": [
 						"todoitems",
 						"{{itemId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete unknown item (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/todoitems/{{$randomInt}}",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"todoitems",
+						"{{$randomInt}}"
 					]
 				}
 			},
