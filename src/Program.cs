@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 app.MapMethods("/", new[] { "HEAD" }, () => "");
