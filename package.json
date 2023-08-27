@@ -3,7 +3,8 @@
     "prestart": "dotnet tool restore",
     "start": "dotnet tool run dotnet-coverage collect -o coverage.xml -f cobertura dotnet run",
     "test": "newman run api-tests.postman_collection.json --delay-request 500",
-    "start-and-test": "start-server-and-test start 5000 test"
+    "start-and-test": "start-server-and-test start 5000 test",
+    "coverage-report": "dotnet reportgenerator -reports:coverage.xml -targetdir:coveragereport -sourcedirs:src -classfilters:'-Serilog.*'"
   },
   "devDependencies": {
     "newman": "^5.3.2",

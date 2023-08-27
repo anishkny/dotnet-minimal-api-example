@@ -399,6 +399,33 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "HEAD request for testing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "HEAD",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}",
+					"host": [
+						"{{APIURL}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -450,10 +477,6 @@
 			"key": "APIURL",
 			"value": "http://localhost:5000",
 			"type": "default"
-		},
-		{
-			"key": "itemId",
-			"value": ""
 		}
 	]
 }

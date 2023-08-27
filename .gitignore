@@ -1,5 +1,6 @@
 *.sln
 bin/
 coverage.xml
+coveragereport/
 node_modules/
 obj/
