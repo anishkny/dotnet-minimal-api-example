@@ -22,3 +22,5 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           files: ./coverage.xml
+      - name: Upload coverage data to Coveralls
+        uses: coverallsapp/github-action@v2
