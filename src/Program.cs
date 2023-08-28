@@ -8,7 +8,7 @@ Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 builder.Host.UseSerilog();
 
 var app = builder.Build();
-app.MapMethods("/", new[] { "HEAD" }, () => "");
+app.MapMethods("/", new[] { "HEAD" }, () => "");    // For testing
 
 var todoItems = app.MapGroup("/todoitems");
 todoItems.MapGet("/", GetAllTodos);
