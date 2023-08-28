@@ -25,7 +25,7 @@ jobs:
       - name: Upload coverage reports to GitHub
         uses: actions/upload-artifact@v3
         with:
-          name: coverage-report
+          name: coverage
           path: |
             coverage.xml
             coveragereport/
