@@ -1,7 +1,8 @@
 {
   "scripts": {
     "prestart": "rm -f coverage.xml && dotnet tool restore",
-    "start": "dotnet tool run dotnet-coverage collect -o coverage.xml -f cobertura dotnet run",
+    "build": "dotnet build",
+    "start": "dotnet tool run dotnet-coverage collect -o coverage.xml -f cobertura dotnet run --no-build",
     "test": "newman run api-tests.postman_collection.json --delay-request 500",
     "stop": "kill-port 5000",
     "start-and-test": "./start-and-test.sh",
