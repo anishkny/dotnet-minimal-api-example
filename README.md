@@ -46,6 +46,14 @@ npm run start
 npm run start-and-test
 ```
 
+### Postman Collection
+
+Included is a Postman collection that can be used to test the API. You can import the collection by opening Postman and clicking on `File > Import...` and selecting the [`api-tests.postman_collection.json`](./api-tests.postman_collection.json) file.
+
+![Postman Collection](./postman.png)
+
+It is also used for automated testing via the `newman` tool.
+
 ### Coverage
 
 After running the test suite, you can view the code coverage report by opening the `coveragereport/index.htm` file in a web browser.
