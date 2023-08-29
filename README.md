@@ -11,7 +11,7 @@ This repository follows along and implements this tutorial: [Create a minimal AP
 
 ### Prerequisites
 
-- [.NET SDK](https://dotnet.microsoft.com/download) (Version 6 or later)
+- [.NET SDK](https://dotnet.microsoft.com/download) (Version 7 or later)
 - [Node.js](https://nodejs.org/en/) (Version 18 or later)
 
 ### Installation
