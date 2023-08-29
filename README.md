@@ -52,4 +52,4 @@ After running the test suite, you can view the code coverage report by opening t
 
 ## License
 
-This project is licensed under the [MIT License] - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](https://opensource.org/license/mit/) - see the [LICENSE](LICENSE) file for details.
