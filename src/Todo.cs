@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 public class Todo
 {
-  public int Id { get; set; }
+  public int Id { get; [ExcludeFromCodeCoverage] set; }
   public string? Name { get; set; }
   public bool IsComplete { get; set; }
 

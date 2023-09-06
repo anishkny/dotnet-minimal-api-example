@@ -21,6 +21,7 @@ const hash = {};
 for (const node of nodes) {
   hash[node.nodeName] = node.nodeValue;
 }
+console.log(hash);
 const packageName = hash["name"];
 assert.equal(packageName, PACKAGE_NAME);
 
@@ -35,3 +36,4 @@ assert.ok(
   branchCoverage >= MINIMUM_BRANCH_COVERAGE,
   `Branch coverage ${branchCoverage} is less than ${MINIMUM_BRANCH_COVERAGE}`
 );
+console.log("OK");
