@@ -8,3 +8,4 @@ npx wait-on http://localhost:$PORT
 npm test
 npm run stop
 npm run coverage-report
+npm run check-coverage
