@@ -245,6 +245,46 @@
 			"response": []
 		},
 		{
+			"name": "Modify unknown item (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"feed fish\",\n    \"isComplete\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/todoitems/{{$randomInt}}",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"todoitems",
+						"{{$randomInt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get modified item",
 			"event": [
 				{
@@ -477,6 +517,10 @@
 			"key": "APIURL",
 			"value": "http://localhost:5000",
 			"type": "default"
+		},
+		{
+			"key": "itemId",
+			"value": ""
 		}
 	]
 }
