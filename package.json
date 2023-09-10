@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "prestart": "rm -f coverage.xml && dotnet tool restore",
+    "migrations:add": "dotnet ef migrations add -o migrations",
     "build": "dotnet build",
+    "prestart": "rm -f coverage.xml && dotnet tool restore && dotnet ef database update --no-build",
     "start": "dotnet tool run dotnet-coverage collect -o coverage.xml -f cobertura dotnet run --no-build",
     "test": "newman run api-tests.postman_collection.json --delay-request 500 --bail",
     "stop": "kill-port 5000",
