@@ -6,7 +6,18 @@ on:
   pull_request:
 
 jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Approve Dependabot PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr review ${{ github.event.pull_request.number }} --approve
   build:
+    needs: dependabot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
