@@ -29,6 +29,16 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"itemName\", pm.variables.replaceIn('{{$randomCatchPhrase}} - {{$randomPassword}}'));",
+							""
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -36,7 +46,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"walk dog\",\n    \"isComplete\": true\n}\n",
+					"raw": "{\n    \"name\": \"{{itemName}}\",\n    \"isComplete\": true\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,6 +160,13 @@
 							"    // Verify shape of returned data",
 							"    const jsonData = pm.response.json();",
 							"    pm.expect(tv4.validate(jsonData, Schemas.TodoItem)).to.be.true;",
+							"});",
+							"",
+							"pm.test('Data is correct', function () {",
+							"    // Verify data",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(pm.collectionVariables.get('itemId'));",
+							"    pm.expect(jsonData.name).to.eql(pm.collectionVariables.get('itemName'));",
 							"});",
 							""
 						],
@@ -520,6 +537,10 @@
 		},
 		{
 			"key": "itemId",
+			"value": ""
+		},
+		{
+			"key": "itemName",
 			"value": ""
 		}
 	]

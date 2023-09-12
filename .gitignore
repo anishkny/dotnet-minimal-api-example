@@ -4,3 +4,4 @@ coverage.xml
 coveragereport/
 node_modules/
 obj/
+todos.db*

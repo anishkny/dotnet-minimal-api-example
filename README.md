@@ -40,6 +40,16 @@ npm run start
 
 2. Open a browser and navigate to [http://localhost:5000/todoitems](http://localhost:5000/todoitems)
 
+### Migrations
+
+If you make changes to the database models, you will need to generate a new migration and apply it to the database.
+
+```bash
+dotnet ef migrations add -o migrations <migration-name>
+```
+
+All migrations are stored in the [`src/migrations`](./src/migrations) directory.
+
 ### Running Tests
 
 ```bash
