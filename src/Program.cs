@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
+string POSTGRES_CONNECTION_STRING = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING")
+  ?? "Host=localhost;Port=5432;Database=todo;Username=postgres;Password=password;";
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TodoDb>(opt => opt.UseSqlite("Data Source=todos.db"));
+builder.Services.AddDbContext<TodoDb>(opt => opt.UseNpgsql(POSTGRES_CONNECTION_STRING));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 builder.Host.UseSerilog();
