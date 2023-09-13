@@ -13,6 +13,7 @@ This repository follows along and implements this tutorial: [Create a minimal AP
 
 - [.NET SDK](https://dotnet.microsoft.com/download) (Version 7 or later)
 - [Node.js](https://nodejs.org/en/) (Version 18 or later)
+- [PostgreSQL](https://www.postgresql.org/) (Version 15 or later)
 
 ### Installation
 
@@ -31,14 +32,22 @@ npm install
 
 ### Usage
 
-1. Run the application
+1. Start a PostgreSQL server
+
+```bash
+docker run -p 5432:5432 -e 'POSTGRES_PASSWORD=password' postgres:15-alpine
+```
+
+Alternately, you can specify a custom environment variable `POSTGRES_CONNECTION_STRING` to connect to a PostgreSQL server running elsewhere.
+
+2. Run the application
 
 ```bash
 npm run build
 npm run start
 ```
 
-2. Open a browser and navigate to [http://localhost:5000/todoitems](http://localhost:5000/todoitems)
+3. Open a browser and navigate to [http://localhost:5000/todoitems](http://localhost:5000/todoitems)
 
 ### Migrations
 
