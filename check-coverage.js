@@ -1,48 +1,26 @@
 #!/usr/bin/env node
-
-// Check code coverage meets threshold
-const fs = require("fs");
-const xpath = require("xpath");
-const dom = require("@xmldom/xmldom").DOMParser;
 const assert = require("node:assert").strict;
 
-const COVERAGE_FILENAME = "coverage.xml";
-const FILENAME_FILTER = `${process.cwd()}/src/`;
-const MINIMUM_LINE_COVERAGE = 1;
-const MINIMUM_BRANCH_COVERAGE = 1;
+const COVERAGE_FILE = "./coveragereport/Summary.json";
+const MINIMUM_LINE_COVERAGE_PERCENT = 100;
+const MINIMUM_BRANCH_COVERAGE_PERCENT = 100;
+const MINIMUM_METHOD_COVERAGE_PERCENT = 100;
 
-console.log(
-  `Checking coverage meets ${MINIMUM_LINE_COVERAGE} line and ${MINIMUM_BRANCH_COVERAGE} branch coverage for files in ${FILENAME_FILTER}`
+console.log(`Checking coverage from ${COVERAGE_FILE}...`);
+
+const coverage = require("./coveragereport/Summary.json");
+
+assert.ok(
+  coverage.summary.linecoverage >= MINIMUM_LINE_COVERAGE_PERCENT,
+  `Line coverage ${coverage.summary.linecoverage} is less than ${MINIMUM_LINE_COVERAGE_PERCENT}`
+);
+assert.ok(
+  coverage.summary.branchcoverage >= MINIMUM_BRANCH_COVERAGE_PERCENT,
+  `Branch coverage ${coverage.summary.branchcoverage} is less than ${MINIMUM_BRANCH_COVERAGE_PERCENT}`
+);
+assert.ok(
+  coverage.summary.methodcoverage >= MINIMUM_METHOD_COVERAGE_PERCENT,
+  `Method coverage ${coverage.summary.methodcoverage} is less than ${MINIMUM_METHOD_COVERAGE_PERCENT}`
 );
 
-// Load Coverage XML file
-const xml = fs.readFileSync(COVERAGE_FILENAME, "utf8");
-
-// Search using XPath, and convert to object
-// XML:
-//    <class line-rate="1" branch-rate="1" complexity="16" name="Program" filename="/work/dotnet-minimal-api-example/src/Program.cs">
-const doc = new dom().parseFromString(xml);
-const nodes = xpath.select(
-  `//class[contains(@filename, "${FILENAME_FILTER}")]`,
-  doc
-);
-
-// Assert that at least one node was found
-console.log(`Found ${nodes.length} nodes`);
-assert.ok(nodes.length > 0, `No nodes found for ${FILENAME_FILTER}`);
-
-// For each node, assert that line-rate and branch-rate are 1
-for (const node of nodes) {
-  const filename = node.getAttribute("filename").replace(FILENAME_FILTER, "");
-  const lineRate = parseFloat(node.getAttribute("line-rate"));
-  const branchRate = parseFloat(node.getAttribute("branch-rate"));
-  assert.ok(
-    lineRate >= MINIMUM_LINE_COVERAGE,
-    `Line coverage ${lineRate} is less than ${MINIMUM_LINE_COVERAGE} for filename: ${filename}`
-  );
-  assert.ok(
-    branchRate >= MINIMUM_BRANCH_COVERAGE,
-    `Branch coverage ${branchRate} is less than ${MINIMUM_BRANCH_COVERAGE}, for filename: ${filename}`
-  );
-}
-console.log("OK");
+console.log("OK!");
