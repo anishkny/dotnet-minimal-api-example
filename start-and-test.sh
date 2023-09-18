@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 PORT=5000
-TIMEOUT=20000   # in milliseconds
+TIMEOUT=60000   # in milliseconds
 
 npm run build
 npm start &
