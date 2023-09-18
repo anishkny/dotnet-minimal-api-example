@@ -7,7 +7,7 @@
     "test": "newman run api-tests.postman_collection.json --delay-request 500 --bail",
     "stop": "kill-port 5000",
     "start-and-test": "./start-and-test.sh",
-    "coverage-report": "dotnet reportgenerator -reports:coverage.xml -targetdir:coveragereport -sourcedirs:src -classfilters:'-Serilog.*'",
+    "coverage-report": "dotnet reportgenerator -reports:coverage.xml -targetdir:coveragereport -sourcedirs:src -classfilters:'-Serilog.*;-*.migrations.*' -reporttypes:'HtmlInline;JsonSummary;lcov;TextSummary' && cat coveragereport/Summary.txt",
     "check-coverage": "node ./check-coverage.js"
   },
   "devDependencies": {
