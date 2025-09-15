@@ -14,7 +14,7 @@
     "@xmldom/xmldom": "^0.9.8",
     "kill-port-process": "^3.2.1",
     "newman": "^6.2.1",
-    "wait-on": "^8.0.4",
+    "wait-on": "^8.0.5",
     "xpath": "^0.0.34"
   }
 }
